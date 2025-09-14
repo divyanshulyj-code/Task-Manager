@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Task Manager</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+  <header class="main-header">
+    <div class="logo">
+      <a href="/">Task Manager</a>
+    </div>
+    <nav class="nav-links">
+      <a href="{{ url_for('tasks') }}" class="nav-item">My Tasks</a>
+      <a href="{{ url_for('add_task') }}" class="nav-item button-link">Add Task</a>
+      <a href="{{ url_for('logout') }}" class="nav-item">Logout</a>
+    </nav>
+  </header>
+
+  <div class="welcome-section">
+    <div class="welcome-card">
+      <h2>Welcome back, {{ current_user.username }}</h2>
+      <p>Here you can manage your tasks and stay productive.</p>
+      <a href="{{ url_for('add_task') }}" class="btn">Start by adding a new task!</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>Your Task List</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Deadline</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for task in tasks %}
+        <tr class="{% if task.status == 'Completed' %}completed{% endif %}">
+          <td>{{ task.title }}</td>
+          <td>{{ task.description }}</td>
+          <td>{{ task.deadline }}</td>
+          <td>{{ task.status }}</td>
+          <td>
+            <button class="toggle-btn" data-id="{{ task.id }}">
+              {% if task.status == 'Completed' %}Mark Pending{% else %}Mark Completed{% endif %}
+            </button>
+            <button class="delete-btn" data-id="{{ task.id }}">Delete</button>
+          </td>
+        </tr>
+        {% else %}
+        <tr>
+          <td colspan="5">No tasks yet. <a href="{{ url_for('add_task') }}">Add one?</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

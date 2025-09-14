@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log In</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+  <header class="main-header">
+    <div class="logo">
+      <a href="/">Task Manager</a>
+    </div>
+    <nav class="nav-links">
+      <a href="/login" class="nav-item button-link">Login</a>
+      <a href="/signup" class="nav-item">Sign Up</a>
+    </nav>
+  </header>
+  <div class="auth-container">
+    <div class="auth-card">
+      <h1>Log In</h1>
+      <h2 style="color:white; font-size:1.5rem; margin-top: -10px; margin-bottom: 10px;">Access Your Tasks</h2>
+      <p style="color:white; margin-bottom: 20px;">Enter your credentials to continue.</p>
+      {% if error %}
+        <p style="color:red; text-align:center;">{{ error }}</p>
+      {% endif %}
+      <form method="POST">
+        <label>Email</label>
+        <input type="email" name="email" required>
+        
+        <label>Password</label>
+        <input type="password" name="password" required>
+        
+        <button type="submit" class="btn">Log In</button>
+      </form>
+      <p style="color:white; margin-top: 15px;">Don’t have an account? <a href="/signup">Sign up</a></p>
+    </div>
+  </div>
+</body>
+</html>

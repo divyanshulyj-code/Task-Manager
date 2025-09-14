@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Manager - Home</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+
+  <header class="main-header">
+    <div class="logo">
+      <a href="/">Task Manager</a>
+    </div>
+    <nav class="nav-links">
+      <a href="/login" class="nav-item button-link">Login</a>
+      <a href="/signup" class="nav-item">Sign Up</a>
+    </nav>
+  </header>
+
+  <div class="hero-banner" style="display: flex; align-items: center; justify-content: center; height: 80vh; color: white;">
+    <div class="banner-content" style="text-align: center;">
+      <h1 style="color:white; font-size: 3em;">Organize Your Life</h1>
+      <p style="color:white; font-size:1.2em; text-align: center;">Keep track of your tasks and boost your productivity.</p>
+      <a href="/signup" class="btn" style="margin-top: 20px;">Get Started</a>
+    </div>
+  </div>
+
+</body>
+</html>

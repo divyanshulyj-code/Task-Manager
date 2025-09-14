@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Add Task</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+  <header class="main-header">
+    <div class="logo">
+      <a href="/">Task Manager</a>
+    </div>
+    <nav class="nav-links">
+      <a href="{{ url_for('tasks') }}" class="nav-item">My Tasks</a>
+      <a href="{{ url_for('add_task') }}" class="nav-item button-link">Add Task</a>
+      <a href="{{ url_for('logout') }}" class="nav-item">Logout</a>
+    </nav>
+  </header>
+  <div class="container">
+    <h1>Add a Task</h1>
+    <form method="post">
+      <label>Title</label>
+      <input type="text" name="title" required>
+
+      <label>Description</label>
+      <textarea name="description"></textarea>
+
+      <label>Deadline</label>
+      <input type="date" name="deadline">
+
+      <button type="submit">Save Task</button>
+    </form>
+    <br>
+    <a href="{{ url_for('tasks') }}" class="button-link">Back</a>
+  </div>
+</body>
+</html>
